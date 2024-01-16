@@ -27,7 +27,6 @@ namespace UI.Demo
 
         private void AddInfo_Click(object sender, RoutedEventArgs e)
         {
-            //notificationHandler.AddNotification(Generals.MessageType.Info, "Info", "there is some information for you", 5);
             notification.AddNotification(Notification.NotificationType.Info, "Info", "there is some information for you", 5);
         }
         private void AddError_Click(object sender, RoutedEventArgs e)

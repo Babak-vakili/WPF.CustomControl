@@ -24,7 +24,6 @@ namespace UI
     {
         private Queue<NotificationMessage> Notifications;
         private static int Max = 4;
-        private static int index = 0;
         DispatcherTimer dispatcherTimer;
 
         public enum NotificationType
@@ -40,17 +39,15 @@ namespace UI
             InitializeComponent();
 
             Notifications = new Queue<NotificationMessage>();
-
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(Check);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             dispatcherTimer.Start();
         }
 
-        public void AddNotification(NotificationType type, string title, string content, int CloaseAfter)
+        public void AddNotification(NotificationType type, string title, string content, int cloaseAfter = 10)
         {
-            index++;
-            NotificationMessage notification = new NotificationMessage(type, title, content, 10, FlowDirection.LeftToRight);
+            NotificationMessage notification = new NotificationMessage(type, title, content, cloaseAfter, FlowDirection.LeftToRight);
             notification.IsVisibleChanged += Notification_IsVisibleChanged;
             Notifications.Enqueue(notification);
         }
